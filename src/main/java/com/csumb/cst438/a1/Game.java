@@ -29,11 +29,12 @@ public class Game {
     private ArrayList<String> wordlist;  // list of words
     
     public Game() {
-        word="computer";
-        createDisplayWord();
+        //word="abcdefgh";
         state=1;
         wordlist=null;
         generator = new Random();
+        word=randomWord();
+        createDisplayWord();
     }
     
     public int getState(){
@@ -50,7 +51,8 @@ public class Game {
     
     public void startNewGame() {
         state = 1;
-        word = "computer";
+        //word = "abcdefgh";
+        word = randomWord();
         createDisplayWord();
         
     }
@@ -122,6 +124,7 @@ public class Game {
 		wordlist = new ArrayList<String>();
 		// read in word list
 		Scanner infile = new Scanner(new File(RESOURCE_DIR + "wordlist.txt"));
+		//Scanner infile = new Scanner(new File("C:\\Temp\\wordlist.txt"));
 		while (infile.hasNextLine()) {
                     wordlist.add(infile.nextLine());
 		}
@@ -132,6 +135,7 @@ public class Game {
 
         } catch (Exception e) {
             System.out.println("Error randomWord: reading wordlist. " + e.getMessage());
+            e.printStackTrace();
             System.exit(0);
             return null; // to keep compiler happy
 	}

@@ -3,6 +3,7 @@ import java.net.*;
 import java.util.*;
 import com.sun.net.httpserver.*;
 import java.io.*;
+import java.lang.*;
 
 public class MyHttpServer {
 
@@ -62,6 +63,7 @@ public class MyHttpServer {
                                 } else {
                                     // continue with current game
                                     char ch = uri.charAt(uri.length()-1);  // letter that user has guessed
+                                    ch = Character.toLowerCase(ch);
                                     int result = game.playGame(ch);
                                     switch(result) {
                                         case 0: // good guess, continue game
